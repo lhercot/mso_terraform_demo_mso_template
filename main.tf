@@ -241,29 +241,6 @@ resource "mso_schema_template_l3out" "on_prem_l3out" {
   vrf_template_name = mso_schema.hybrid_cloud.template_name
 }
 
-resource "mso_schema_template_external_epg" "extepg_cloud_internet" {
-  schema_id         = mso_schema.hybrid_cloud.id
-  template_name     = mso_schema.hybrid_cloud.template_name
-  external_epg_name = "Cloud-Internet"
-  display_name      = "Cloud-Internet"
-  external_epg_type = "cloud"
-  vrf_name          = mso_schema_template_vrf.vrf1.name
-  vrf_template_name = mso_schema.hybrid_cloud.template_name
-  anp_name          = mso_schema_template_anp.anp.name
-  selector_name     = "Internet"
-  selector_ip       = "0.0.0.0/0"
-  site_id           = [ 
-    data.mso_site.aws.id,
-    data.mso_site.azure.id,
-    data.mso_site.on_premises.id
-  ]
-  depends_on = [
-    mso_rest.aws_site,
-    mso_rest.azure_site,
-    mso_schema_site.on_premises_shared
-  ]
-}
-
 resource "mso_schema_template_external_epg" "extepg_on_prem_internet" {
   schema_id         = mso_schema.hybrid_cloud.id
   template_name     = mso_schema.hybrid_cloud.template_name
