@@ -262,22 +262,6 @@ resource "mso_schema_template_external_epg_subnet" "extepg_on_prem_internet_subn
   aggregate         = ["shared-rtctrl", "export-rtctrl"]
 }
 
-resource "mso_schema_template_external_epg_contract" "extepg_cloud_internet_c1" {
-  schema_id         = mso_schema.hybrid_cloud.id
-  template_name     = mso_schema.hybrid_cloud.template_name
-  contract_name     = mso_schema_template_contract.contract_internet_web.contract_name
-  external_epg_name = mso_schema_template_external_epg.extepg_cloud_internet.external_epg_name
-  relationship_type = "consumer"
-}
-
-resource "mso_schema_template_external_epg_contract" "extepg_cloud_internet_c2" {
-  schema_id         = mso_schema.hybrid_cloud.id
-  template_name     = mso_schema.hybrid_cloud.template_name
-  contract_name     = mso_schema_template_contract.contract_vms_internet.contract_name
-  external_epg_name = mso_schema_template_external_epg.extepg_cloud_internet.external_epg_name
-  relationship_type = "provider"
-}
-
 resource "mso_schema_template_external_epg_contract" "extepg_on_prem_internet_c1" {
   schema_id         = mso_schema.hybrid_cloud.id
   template_name     = mso_schema.hybrid_cloud.template_name
