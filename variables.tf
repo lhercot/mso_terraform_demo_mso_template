@@ -22,7 +22,3 @@ variable "subnet_gw" {
   default = "10.101.10.254/24"
   description = "The subnet gateway address with mask"
 }
-
-variable "mso_username" {}
-variable "mso_password" {}
-variable "mso_url" {}

@@ -6,18 +6,6 @@ terraform {
   }
 }
 
-provider "mso" {
-  # Configuration options
-  // Requires ENV variable TF_VAR_mso_username 
-  username  = var.mso_username
-  // Requires ENV variable TF_VAR_mso_password
-  password  = var.mso_password
-  // Requires ENV variable TF_VAR_mso_url
-  url       = var.mso_url
-
-  insecure  = true
-}
-
 data "mso_tenant" "wos" {
   name = var.tenant
   display_name = var.tenant
